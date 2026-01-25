@@ -1,10 +1,15 @@
+# main.py
+
 from backtest.engine import run_engine
 
 if __name__ == "__main__":
-    feeds = run_engine()
+    opportunities = run_engine()
 
-    print("\n=== SIMULATED FEEDS (HEAD) ===")
-    print(feeds.head())
+    print(f"\nTotal arbitrage opportunities detected: {len(opportunities)}\n")
 
-    print("\n=== SIMULATED FEEDS (TAIL) ===")
-    print(feeds.tail())
+    for opp in opportunities[:10]:
+        print(
+            f"{opp['timestamp']} | "
+            f"{opp['direction']} | "
+            f"spread = {opp['spread_pct'] * 100:.3f}%"
+        )
