@@ -8,3 +8,8 @@
 # 0.002 = 0.2%
 
 MIN_SPREAD_PCT = 0.001
+
+# Execution assumption
+TRADE_SIZE_BTC = 0.01
+FEE_PCT = 0.0005
+INITIAL_CASH = 100_000

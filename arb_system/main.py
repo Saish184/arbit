@@ -3,13 +3,9 @@
 from backtest.engine import run_engine
 
 if __name__ == "__main__":
-    opportunities = run_engine()
+    portfolio = run_engine()
 
-    print(f"\nTotal arbitrage opportunities detected: {len(opportunities)}\n")
-
-    for opp in opportunities[:10]:
-        print(
-            f"{opp['timestamp']} | "
-            f"{opp['direction']} | "
-            f"spread = {opp['spread_pct'] * 100:.3f}%"
-        )
+    print("\n=== BACKTEST RESULTS ===")
+    print(f"Trades executed: {portfolio.trades}")
+    print(f"Final cash: ${portfolio.cash:,.2f}")
+    print(f"Total PnL: ${portfolio.pnl:,.2f}")
