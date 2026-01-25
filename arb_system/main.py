@@ -1,15 +1,10 @@
-from data.loader import load_price_data
+from backtest.engine import run_engine
 
 if __name__ == "__main__":
-    df = load_price_data("data/btc.csv")
+    feeds = run_engine()
 
-    print("=== HEAD ===")
-    print(df.head())
+    print("\n=== SIMULATED FEEDS (HEAD) ===")
+    print(feeds.head())
 
-    print("\n=== TAIL ===")
-    print(df.tail())
-
-    print("\n === TIME RANGE ===")
-    print(df.index.min(), "→", df.index.max())
-
-    
+    print("\n=== SIMULATED FEEDS (TAIL) ===")
+    print(feeds.tail())

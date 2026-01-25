@@ -1,24 +1,22 @@
 import pandas as pd
+from pathlib import Path
 
-def load_price_data(csv_path: str) -> pd.DataFrame:
+def load_price_data(filename: str) -> pd.DataFrame:
     """
-    Loads historical price data from a CSV file.
-    Expects a UNIX timestamp in seconds.
-    Returns a DataFrame indexed by datetime.
+    Load historical BTC price data from CSV.
+    Path is resolved relative to this file, not the working directory.
     """
+
+    data_dir = Path(__file__).resolve().parent
+    csv_path = data_dir / filename
+
+    if not csv_path.exists():
+        raise FileNotFoundError(f"CSV not found at: {csv_path}")
 
     df = pd.read_csv(csv_path)
 
-    # normalize column names
-
     df.columns = [c.lower() for c in df.columns]
-
-    # Convert UNIX  timestamp (seconds) -> datetime(UTC)
-
-    df["timestamp"] = pd.to_datetime(df["timestamp"], unit="s" , utc=True)
+    df["timestamp"] = pd.to_datetime(df["timestamp"], unit="s", utc=True)
     df.set_index("timestamp", inplace=True)
 
-    # keep only close price for MVP
-    df = df[["close"]].dropna()
-
-    return df
+    return df[["close"]]
