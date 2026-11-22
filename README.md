@@ -2,7 +2,7 @@
 
 A Python research system for studying cross-exchange BTC arbitrage: **is there a spread between two venues, is it big enough to beat fees, and how long does it last?** It has two modes: a historical backtest and a live spread monitor that streams real order-book quotes.
 
-> Status: research prototype. It detects and measures opportunities and simulates fills. It does **not** place real orders.
+> Status: **parked early exploration (Jan–Feb 2026).** This was my first quant project, built to learn how arbitrage really works. It detects and measures opportunities and simulates fills. It does **not** place real orders. The biggest takeaway: a price gap is not an opportunity, an opportunity is not an executable trade, and an executable trade is not necessarily profitable.
 
 ## What it does
 
